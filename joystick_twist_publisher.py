@@ -33,8 +33,8 @@ class JoystickTwistPublisher(Node):
         # Read joystick axes
         # Assuming left stick for linear and right stick for angular:
         # Axes 0, 1: Left stick (x, y); Axes 2, 3: Right stick (x, y)
-        self.twist_msg.linear.x = -self.joystick.get_axis(1)  # Forward/backward
-        self.twist_msg.linear.y = self.joystick.get_axis(0)   # Left/right
+        self.twist_msg.linear.x = self.joystick.get_axis(0)  # Forward/backward
+        self.twist_msg.linear.y = -self.joystick.get_axis(1)   # Left/right
         self.twist_msg.angular.z = self.joystick.get_axis(2)  # Spin
 
         # Log and publish the twist message
