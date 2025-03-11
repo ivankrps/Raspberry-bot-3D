@@ -38,7 +38,7 @@ class RobotControlServer(Node):
 
     def handle_movement(self, data):
         """Handle movement control commands."""
-        self.get_logger().info(f"Received movement: X={data.linear.x}, Y={data.linear.y}, Z={data.angular.z}")
+        #self.get_logger().info(f"Received movement: X={data.linear.x}, Y={data.linear.y}, Z={data.angular.z}")
 
         # Assuming `linear.x` and `linear.y` are for movement and `angular.z` is for spin
         Speed_axis_X = int(data.linear.x * 15)
@@ -46,8 +46,8 @@ class RobotControlServer(Node):
         Speed_axis_Z = int(data.angular.z * 15)
 
         # Send movement commands to the robot
-        robot.Speed_axis_Yawhold_control(Speed_axis_X, Speed_axis_Y)
-        self.get_logger().info(f"Executing movement: X={Speed_axis_X}, Y={Speed_axis_Y}, Z={Speed_axis_Z}")
+        robot.Speed_axis_control(Speed_axis_X, Speed_axis_Y,Speed_axis_Z)
+#        self.get_logger().info(f"Executing movement: X={Speed_axis_X}, Y={Speed_axis_Y}, Z={Speed_axis_Z}")
 
 def main(args=None):
     rclpy.init(args=args)
